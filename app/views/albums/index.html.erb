@@ -6,9 +6,21 @@
   <%= link_to 'Alphabetical', {:controller => "albums", :action => "index", :filter => "alphabetical" } %>
 </div>
 
+<div class="random-pick flex-box">
+  <div class="album-img"><h2>Random album of the week</h2><br><%= link_to image_tag(@display_album.image), album_path(@display_album)%><br>
+    Submitted <%= time_ago_in_words(@display_album.created_at) %> ago.
+  </div>
+</div>
+
+
+
   <div class="flex-box">
       <% @albums.each do |album| %>
-      <div class="album-img"><%= link_to image_tag(album.image), album_path(album)%></div>
+      <div class="album-img">
+        <%= link_to image_tag(album.image), album_path(album)%>
+        <br>
+        Submitted <%= time_ago_in_words(album.created_at) %> ago.
+      </div>
       <% end %>
   </div>
 

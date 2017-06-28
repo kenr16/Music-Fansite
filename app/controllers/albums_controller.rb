@@ -8,6 +8,20 @@ class AlbumsController < ApplicationController
     if params[:filter] === "alphabetical"
       @albums = Album.alphabetical
     end
+
+    random_integer = 0
+
+    loop do
+      random_integer = 1 + rand(Album.all.length).to_i
+      break if  random_integer != 5
+    end
+
+    @display_album = Album.find(random_integer)
+
+    puts("***************************************************")
+    puts(@display_album)
+
+
     render :index
   end
 
