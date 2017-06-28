@@ -9,6 +9,29 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="navbar navbar-default" role="navigation">
+    <div class="navbar-inner">
+      <div class="container">
+        <div id="logo" class="navbar-brand"><%= link_to "
+        Fansite", root_path %></div>
+        <nav class="collapse navbar-collapse navbar-ex1-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><%= link_to 'Add Album', new_album_path %></li>
+						</ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+
+		<% flash.each do |name, msg| %>
+			<%= content_tag(:div, msg, class: "alert alert-info") %>
+		<% end %>
+
+			<div id="content" class="col-md-12 center-block">
+				<%= yield %>
+			</div>
+		</div>
+
   </body>
 </html>
