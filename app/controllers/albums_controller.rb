@@ -5,6 +5,9 @@ class AlbumsController < ApplicationController
     if params[:filter] === "mostRecent"
       @albums = Album.most_recent
     end
+    if params[:filter] === "alphabetical"
+      @albums = Album.alphabetical
+    end
     render :index
   end
 

@@ -1,13 +1,17 @@
-<h1>Albums</h1>
+<h1>Favourite Albums </h1>
 
-<%= link_to 'most recent', {:controller => "albums", :action => "index", :filter => "mostRecent" } %>
+<div class="sort">
+  <p>sort by:</p>
+  <%= link_to 'Most Recent', {:controller => "albums", :action => "index", :filter => "mostRecent" } %>  |
+  <%= link_to 'Alphabetical', {:controller => "albums", :action => "index", :filter => "alphabetical" } %>
+</div>
 
+  <div class="flex-box">
+      <% @albums.each do |album| %>
+      <div class="album-img"><%= link_to image_tag(album.image), album_path(album)%></div>
+      <% end %>
+  </div>
 
-<ul>
-  <% @albums.each do |album| %>
-  <li><%= link_to album.name, album_path(album)%></li>
-  <% end %>
-</ul>
 
 <hr>
 <%= link_to "New Album", new_album_path %>

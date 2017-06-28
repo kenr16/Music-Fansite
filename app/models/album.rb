@@ -4,6 +4,7 @@ class Album < ActiveRecord::Base
 
 
   scope :most_recent, -> { order(created_at: :desc)}
+  scope :alphabetical, -> { order(name: :asc)}
 
   validates :name, :presence => true
   validates :artist, :presence => true
