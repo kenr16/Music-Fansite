@@ -2,6 +2,9 @@ class AlbumsController < ApplicationController
 
   def index
     @albums = Album.all
+    if params[:filter] === "mostRecent"
+      @albums = Album.most_recent
+    end
     render :index
   end
 
@@ -43,6 +46,8 @@ class AlbumsController < ApplicationController
     @album.destroy
     redirect_to albums_path
   end
+
+
 
   private
   def album_params

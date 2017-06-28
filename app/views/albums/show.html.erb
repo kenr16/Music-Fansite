@@ -3,6 +3,28 @@
 <h3><%= @album.genre %></h3>
 <%= image_tag @album.image %>
 
+<% if @album.reviews.any? %>
+<h4>Here are the reviews for this album:</h4>
+
+<ul>
+  <% @album.reviews.each do |review| %>
+  <li>
+    <%= review.author %>
+    <%= review.content %>
+    <%= review.rating %>
+    <%= link_to "Edit", edit_album_review_path(@album, review) %> |
+        <%= link_to "Delete", album_review_path(@album, review),
+                                 :data => {:confirm => "Are you sure?",
+                                                :method => "delete"} %>
+  </li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no reviews yet!</p>
+<% end %>
+
+
+<p><%= link_to "Add a Review", new_album_review_path(@album) %></p>
 <p><%= link_to "Return to albums", albums_path %></p>
 <p><%= link_to "Edit", edit_album_path(@album) %></p>
 <p><%= link_to "Delete", album_path(@album),

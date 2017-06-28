@@ -6,7 +6,7 @@ class CreateAlbums < ActiveRecord::Migration[5.1]
       t.column :genre, :string
       t.column :image, :string
 
-      t.timestamp
+      t.timestamps
     end
   end
 end
