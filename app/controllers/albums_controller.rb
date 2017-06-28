@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
 
   def index
+    genre_parameter = nil
     @albums = Album.all
     if params[:filter] === "mostRecent"
       @albums = Album.most_recent
@@ -8,6 +9,7 @@ class AlbumsController < ApplicationController
     if params[:filter] === "alphabetical"
       @albums = Album.alphabetical
     end
+
 
     random_integer = 0
 
@@ -17,9 +19,6 @@ class AlbumsController < ApplicationController
     end
 
     @display_album = Album.find(random_integer)
-
-    puts("***************************************************")
-    puts(@display_album)
 
 
     render :index
